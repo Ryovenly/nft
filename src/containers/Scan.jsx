@@ -15,12 +15,15 @@ const Scan = () => {
                 await ndef.scan();
                 
                 console.log("Scan started successfully.");
+                alert("Scan started successfully.");
                 ndef.onreadingerror = () => {
                     console.log("Cannot read data from the NFC tag. Try another one?");
+                    alert("Cannot read data from the NFC tag. Try another one?");
                 };
                 
                 ndef.onreading = event => {
                     console.log("NDEF message read.");
+                    alert("NDEF message read.");
                     onReading(event);
                     setActions({
                         scan: 'scanned',
@@ -30,6 +33,7 @@ const Scan = () => {
 
             } catch(error){
                 console.log(`Error! Scan failed to start: ${error}.`);
+                alert(`Error! Scan failed to start: ${error}.`);
             };
         }
     },[setActions]);
